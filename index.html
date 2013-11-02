@@ -2,48 +2,33 @@
 <html>
 	<head>
 		<title>Chat with socket.io and node.js</title>
-		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
-		<style type="text/css">
-			#chat{
-	height:100px;
-	overflow-y:auto;
-	position:relative;
-}
-#chatWrap{
-	position:relative;
-	max-width:500px;
-	height:100px;
-	border: 1px solid black;
-}
-#send-message{
-	position:relative;
-	margin-right:auto;
-	margin-left:auto;
-	width:250px;
-}
-		</style>
+		<script src="/js/bootstrap.js"></script>
+		<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
 	</head>
 	<body>
-		<div id="nameWrap">
-			<p>Enter a username: </p>
-			<p id="nameError"></p>
-			<form id="setName">
-				<input size="35" id="username">
-				<input type="submit">
-			</form>
-		</div>
-
-		<div id="contentWrap">
-			<div id="chatWrap">
-				<div id="chat"></div>
+		<div id="bodywrap">
+			<div id="nameWrap">
+				<p id="nameError"></p>
+				<form id="setName" class="form-inline">
+					Enter a username:
+					<input size="35" id="username" type="text" autocomplete="off">
+					<input type="submit" class="btn">
+				</form>
 			</div>
-			<form id="send-message">
-				<input size="35" id="message">
-			</form>
+
+			<div id="contentWrap">
+				<div id="chatWrap">
+					<div id="chat"></div>
+				</div>
+				<form id="send-message">
+					<input size="50" type="text" id="message" placeholder="Type here" autocomplete="off">
+				</form>
+			</div>
+			<div id="users"></div>
 		</div>
-		<div id="users"></div>
 
 		<script>
 			jQuery(function($){
@@ -87,7 +72,7 @@
 				});
 
 				socket.on('new message', function(data){
-					$chat.append('<b>' + data.user + ': </b>' + data.msg + "<br/>");//Print User: msg
+					$chat.append('<b> ' + data.user + ': </b>' + data.msg + "<br/>");//Print User: msg
 				});
 			});
 		</script>
