@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<title>Chat with socket.io and node.js</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+	</head>
+	<body>
+		<div id="nameWrap">
+			<p>Enter a username: </p>
+			<p id="nameError"></p>
+			<form id="setName">
+				<input size="35" id="username">
+				<input type="submit">
+			</form>
+		</div>
+
+		<div id="contentWrap">
+			<div id="chatWrap">
+				<div id="chat"></div>
+			</div>
+			<div id="users"></div>
+			<form id="send-message">
+				<input size="35" id="message">
+			</form>
+		</div>
+
+		<script>
+			jQuery(function($){
+				var socket = io.connect();
+				var $nameForm = $('#setName');
+				var $nameError = $('#nameError');
+				var $nameBox = $('#username');
+				var $users = $('#users')
+				var $messageForm = $('#send-message');
+				var $messageBox = $('#message');
+				var $chat = $('#chat');
+
+				$('#nameWrap').show();
+				$('#contentWrap').hide();
+
+				$nameForm.submit(function(e){
+					e.preventDefault();
+					socket.emit('new user', $nameBox.val(), function(data){
+						if(data){
+							$('#nameWrap').hide();
+							$('#contentWrap').show();
+						}else{
+							$nameError.html('That username is already taken! Try again.');
+						}
+					});
+					$nickBox.val('');
+				});
+
+				$messageForm.submit(function(e){
+					e.preventDefault();
+					socket.emit('send message', $messageBox.val());
+					$messageBox.val('');
+				});
+
+				socket.on('usernames', function(data){
+					var html = '';
+					for(i=0;i<data.length;i++){
+						html += data[i] + '<br/>'
+					}
+					$users.html(html);
+				});
+
+				socket.on('new message', function(data){
+					$chat.append('<b>' + data.user + ': </b>' + data.msg + "<br/>");
+				});
+			});
+		</script>
+	</body>
+</html>

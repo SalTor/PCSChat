@@ -1,0 +1,18 @@
+#chat{
+	height:500px;
+	overflow:hidden;
+	position:relative;
+}
+#send-message{
+	position:relative;
+	margin-right:auto;
+	margin-left:auto;
+	width:250px;
+}
+#chatWrap{
+	float:left;
+	border: 1px solid black;
+}
+#uers{
+	
+}
