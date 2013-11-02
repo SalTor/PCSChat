@@ -1,15 +1,28 @@
 #chat{
-	height:500px;
-	overflow:hidden;
+	height:100px;
+	overflow-y:auto;
 	position:relative;
-}
-#send-message{
-	position:relative;
-	margin-right:auto;
-	margin-left:auto;
-	width:250px;
+	bottom:0;
 }
 #chatWrap{
-	float:left;
+	position:relative;
+	overflow:none;
+	max-width:500px;
+	min-width:500px;
+	height:100px;
 	border: 1px solid black;
+	padding:5px;
+}
+#message{
+	position:relative;
+	padding:5px;
+	margin-top:5px;
+}
+#bodywrap{
+	position:absolute;
+	left:1%;
+	top:1%;
+}
+#users{
+	float:left;
 }
