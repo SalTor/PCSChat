@@ -26,7 +26,7 @@
 				<form id="send-message">
 					<input size="50" type="text" id="message" placeholder="Type here" autocomplete="off">
 				</form>
-			</div>
+			</div>			
 			<div id="users"></div>
 		</div>
 
@@ -43,6 +43,7 @@
 
 				$('#nameWrap').show();
 				$('#contentWrap').hide();
+				$('#users').hide();
 
 				$nameForm.submit(function(e){
 					e.preventDefault();
@@ -50,6 +51,7 @@
 						if(data){
 							$('#nameWrap').hide();
 							$('#contentWrap').show();
+							$('#users').show();
 						}else{
 							$nameError.html('That username is already taken! Try again.'); //Append string to empty paragraph w/ id nameError
 						}
