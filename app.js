@@ -13,17 +13,18 @@ app.get('/', function(req, res){
 io.sockets.on('connection', function(socket){
 	socket.on('new user', function(data, callback){
 		if(usernames.indexOf(data)!=-1){
-			callback(false);
+			callback(false); //If entered username already exists, don't allow
 		}else{
 			callback(true);
-			socket.username = data;
-			usernames.push(socket.username);
-			updateUsernames();
+			socket.username = data; //Save username data to the username socket
+			usernames.push(socket.username); //Add username to array
+			updateUsernames(); //Add new user to list of conncted users
 		}
 	});
 
 	function updateUsernames(){
 		io.sockets.emit('usernames', usernames);
+		//Update list of users connected
 	}
 
 	socket.on('send message', function(data){
@@ -31,8 +32,8 @@ io.sockets.on('connection', function(socket){
 	});
 
 	socket.on('disconnect', function(data){
-		if(!socket.username) return;
-		usernames.splice(usernames.indexOf(socket.username), 1);
-		updateUsernames();
+		if(!socket.username) return; //If user closes tab before entering username, nothing happens
+		usernames.splice(usernames.indexOf(socket.username), 1); //Else remove user who was occupying that socket
+		updateUsernames(); //Update list of users connected
 	});
 });
