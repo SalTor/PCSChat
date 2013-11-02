@@ -13,6 +13,9 @@
 	border: 1px solid black;
 	padding:5px;
 }
+#contentWrap{
+	float:left;
+}
 #message{
 	position:relative;
 	padding:5px;
@@ -25,4 +28,8 @@
 }
 #users{
 	float:left;
+	margin:10px;
+	padding:10px;
+	border:1px solid black;
+	border-radius:5px;
 }
