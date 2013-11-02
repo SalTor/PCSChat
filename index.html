@@ -1,9 +1,29 @@
+<!DOCTYPE HTML>
 <html>
 	<head>
 		<title>Chat with socket.io and node.js</title>
-		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
+		<style type="text/css">
+			#chat{
+	height:100px;
+	overflow-y:auto;
+	position:relative;
+}
+#chatWrap{
+	position:relative;
+	max-width:500px;
+	height:100px;
+	border: 1px solid black;
+}
+#send-message{
+	position:relative;
+	margin-right:auto;
+	margin-left:auto;
+	width:250px;
+}
+		</style>
 	</head>
 	<body>
 		<div id="nameWrap">
@@ -19,11 +39,11 @@
 			<div id="chatWrap">
 				<div id="chat"></div>
 			</div>
-			<div id="users"></div>
 			<form id="send-message">
 				<input size="35" id="message">
 			</form>
 		</div>
+		<div id="users"></div>
 
 		<script>
 			jQuery(function($){
@@ -55,7 +75,7 @@
 				$messageForm.submit(function(e){
 					e.preventDefault();
 					socket.emit('send message', $messageBox.val());
-					$messageBox.val('');
+					$messageBox.val('');//When message is submitted, clear message field
 				});
 
 				socket.on('usernames', function(data){
