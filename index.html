@@ -46,10 +46,10 @@
 							$('#nameWrap').hide();
 							$('#contentWrap').show();
 						}else{
-							$nameError.html('That username is already taken! Try again.');
+							$nameError.html('That username is already taken! Try again.'); //Append string to empty paragraph w/ id nameError
 						}
 					});
-					$nickBox.val('');
+					$nameBox.val('');//If entered username is taken clear username field
 				});
 
 				$messageForm.submit(function(e){
@@ -63,11 +63,11 @@
 					for(i=0;i<data.length;i++){
 						html += data[i] + '<br/>'
 					}
-					$users.html(html);
+					$users.html(html);//Print out the usernames of the connected users
 				});
 
 				socket.on('new message', function(data){
-					$chat.append('<b>' + data.user + ': </b>' + data.msg + "<br/>");
+					$chat.append('<b>' + data.user + ': </b>' + data.msg + "<br/>");//Print User: msg
 				});
 			});
 		</script>
