@@ -27,7 +27,9 @@
 					<input size="50" type="text" id="message" placeholder="Type here" autocomplete="off">
 				</form>
 			</div>			
-			<div id="users"></div>
+			<div id="userscontainer">
+				<div id="users"></div>
+			</div>
 		</div>
 
 		<script>
@@ -43,7 +45,7 @@
 
 				$('#nameWrap').show();
 				$('#contentWrap').hide();
-				$('#users').hide();
+				$('#userscontainer').hide();
 
 				$nameForm.submit(function(e){
 					e.preventDefault();
@@ -51,7 +53,7 @@
 						if(data){
 							$('#nameWrap').hide();
 							$('#contentWrap').show();
-							$('#users').show();
+							$('#userscontainer').show();
 						}else{
 							$nameError.html('That username is already taken! Try again.'); //Append string to empty paragraph w/ id nameError
 						}
