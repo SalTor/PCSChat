@@ -16,13 +16,13 @@ Chat room in the works for Pace computing society
 
 Objectives
 ===
-To bring the Seidenberg school of computer science together by having a place for them to chat
+To bring the Seidenberg school of computer science together by having a place for them to chat and to learn about collaborating on a project with VC
 
 
 People on board
 ===
 1. Sal Torcivia (st)
-2. Mike Conte ([put what you want as your initials, Mike])
+2. Mike Conte (mc)
 
 Finished
 ===
