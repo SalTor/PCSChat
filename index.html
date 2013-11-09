@@ -75,6 +75,7 @@
 
 				socket.on('new message', function(data){
 					$chat.append('<b> ' + data.user + ': </b>' + data.msg + "<br/>");//Print User: msg
+					$('#chat').scrollTop($('#chat')[0].scrollHeight); //Scrolls the chat down whenever a new message is appended
 				});
 			});
 		</script>
