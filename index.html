@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Chat with socket.io and node.js</title>
-		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="/js/jquery-1.10.2.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="/js/bootstrap.js"></script>
 		<link rel="stylesheet" type="text/css" href="/css/style.css"/>
@@ -27,7 +27,14 @@
 					<input size="50" type="text" id="message" placeholder="Type here" autocomplete="off">
 				</form>
 			</div>			
-			<div id="users"></div>
+			<div id="userscontainer">
+				<table>
+					<th>Current Users</th>
+					<tr>
+						<td id="users"></td>
+					</tr>
+				</table>
+			</div>
 		</div>
 
 		<script>
@@ -43,7 +50,7 @@
 
 				$('#nameWrap').show();
 				$('#contentWrap').hide();
-				$('#users').hide();
+				$('#userscontainer').hide();
 
 				$nameForm.submit(function(e){
 					e.preventDefault();
@@ -51,7 +58,7 @@
 						if(data){
 							$('#nameWrap').hide();
 							$('#contentWrap').show();
-							$('#users').show();
+							$('#userscontainer').show();
 						}else{
 							$nameError.html('That username is already taken! Try again.'); //Append string to empty paragraph w/ id nameError
 						}
