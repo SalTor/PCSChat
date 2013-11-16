@@ -4,6 +4,17 @@ var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 var usernames = [];
 
+var databaseUrl = "nodetest1";
+var collections = ["users"]
+var db = require("mongojs").connect(databaseUrl, collections);
+
+db.users.find({username: "testuser1"}, function(err, users) {
+	if( err || !users) 
+		console.log("User not found. Database might not be connected...");
+	else
+		console.log("User found. Database properly connected!");
+});
+
 server.listen(3000);
 
 app.use(express.static(__dirname));
