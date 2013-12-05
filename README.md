@@ -20,6 +20,7 @@ People on board
 ===
 1. Sal Torcivia (st)
 2. Mike Conte (mc)
+3. Frank Fico (ff)
 
 Notes (mc)
 ===
